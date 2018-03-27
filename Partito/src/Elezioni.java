@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 
 public class Elezioni {
 	private Partito[] partiti;
@@ -16,14 +17,26 @@ public class Elezioni {
 		return this.partiti.length;
 	}
 	
+	private long getNumVoti() {
+		long result = 0;
+		for (Partito p : partiti) {
+			result += p.getVoti();
+		}
+		return result;
+	}
+	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
+		NumberFormat form = NumberFormat.getPercentInstance();
 		StringBuilder s = new StringBuilder();
+		long voti = getNumVoti();
 		
 		for (Partito p : partiti) {
 			s.append(p);
-			s.append("\n");
+			double perc = (double)p.getVoti() / voti;
+			s.append(form.format(perc) + "\n");
 		}
+		
+		return s.toString();
 	}
 }

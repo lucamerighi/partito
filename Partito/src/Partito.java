@@ -22,7 +22,7 @@ public class Partito {
 	
 	@Override
 	public String toString() {
-		return (this.nome + "\t Voti: " + this.voti);
+		return (this.nome + " ");
 	}
 	
 }
